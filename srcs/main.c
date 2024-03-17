@@ -19,14 +19,15 @@ int main(int argc, char **argv)
     // ./fractol 1   => mandelbrot
     // ./fractol 2 <real> <i>   => julia
     i = 0;
-    if (argc < 2 || (argv[1] == "1" && argc > 2) // Mandelbrot with parameters
-            || (argv[1] == "2") && argc < 4) // Julia with less params then needed
+    if (argc < 2 || (argv[1] == "1\0" && argc > 2) // Mandelbrot with parameters
+            || (argv[1] == "2\0") && argc < 4// Julia with less params then needed
+            || (argv[1] != "1\0" || argv[2] != "2\0"))
     {
         // displays a list of available parameters and exits properly.
         ft_putstr_fd(ERROR_MSG, STDERR_FILENO);
         exit(EXIT_FAILURE);
     }
-    else if (argv[1] == "1")
+    else if (argv[1] == "1\0")
         render_fractal(ft_atoi(argv[1]), 720, 480); // Think more about these fixed values
     else //Julia choosed
         render_fractal(ft_atoi(argv[1]), n1, n2); // complex numbers
