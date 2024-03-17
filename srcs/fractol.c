@@ -30,7 +30,22 @@ void    init_minilibx(void *mlx)
     while ( x <= 1200)
     {
         pixel_put(img, x, y, 0x00FF0000);
+        while (y >= 270)
+        {
+            pixel_put(img, x, y, 0x00FF0000);
+            y--;
+        }
         x++;
+    }
+    while ( x >= 720)
+    {
+        pixel_put(img, x, y, 0x00FF0000);
+        while (y <= 675)
+        {
+            pixel_put(img, x, y, 0x00FF0000);
+            y++;
+        }
+        x--;
     }
     mlx_put_image_to_window(mlx, mlx_window, img.img, 0, 0);
     mlx_loop(mlx); // keeps the window open
