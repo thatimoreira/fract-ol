@@ -15,7 +15,15 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+# include <stdarg.h>
+# include <sys/types.h>
 
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 21
+
+#endif
+
+// Libft
 int		ft_isdigit(int c);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
@@ -50,5 +58,24 @@ char	*ft_strtrim(char const *s1, char const *set);
 char	**ft_split(char const *s, char c);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void	ft_striteri(char *s, void (*f)(unsigned int, char *));
+int     ft_printf(const char *format, ...);
+
+// Printf
+int     pf_putchar(int c);
+int     pf_putstr(char *str);
+size_t  pf_strlen(const char *str);
+int     pf_putnbr(int num);
+int     pf_putptr(void *ptr);
+int     pf_puthexadec(unsigned int num, const char format);
+int     pf_put_uint(unsigned int num);
+size_t  pf_numlen(unsigned long long num);
+
+//GNL
+size_t  gnl_strlen(const char *s);
+char    *gnl_strcpy(char *dest, const char *src);
+char    *gnl_strdup(const char *str);
+char    *gnl_strjoin(char const *str1, char const *str2);
+char    *gnl_substr(const char *stg, unsigned int start, size_t len);
+char    *get_next_line(int fd);
 
 #endif
