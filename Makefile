@@ -1,7 +1,8 @@
-SRCS = 	srcs/fractol.c
+SRCS = 	srcs/fractol.c srcs/fractol_utils.c
 
 INC = /usr/include
 MLX_LIB = includes/minilibx-linux/
+FRACT = includes/
 #LIBFT = includes/libft
 
 OBJS =	$(SRCS:.c=.o)
