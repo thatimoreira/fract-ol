@@ -40,7 +40,7 @@ char	*gnl_strdup(const char *str)
 	dst = (char *)malloc((ft_strlen(str) + 1) * sizeof(char));
 	if (dst == NULL)
 		return (NULL);
-	dst = ft_strcpy(dst, str);
+	dst = gnl_strcpy(dst, str);
 	return (dst);
 }
 
@@ -54,7 +54,7 @@ char	*gnl_strjoin(char const *s1, char const *s2)
 		return (NULL);
 	i = 0;
 	s_pos = 0;
-	str = (char *)malloc(((ft_strlen(s1) + ft_strlen(s2)) + 1) * sizeof(char));
+	str = (char *)malloc(((gnl_strlen(s1) + gnl_strlen(s2)) + 1) * sizeof(char));
 	if (!str)
 		return (NULL);
 	while (s1[i])
@@ -75,10 +75,10 @@ char	*gnl_substr(const char *stg, unsigned int start, size_t len)
 
 	if (!stg)
 		return (NULL);
-	stg_len = ft_strlen(stg);
+	stg_len = gnl_strlen(stg);
 	i = 0;
 	if (stg_len <= start)
-		return (ft_strdup(""));
+		return (gnl_strdup(""));
 	if (stg_len < start + len)
 		end_substr = stg_len;
 	else

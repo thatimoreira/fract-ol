@@ -5,7 +5,7 @@ SRCS = 	ft_isdigit.c ft_toupper.c ft_tolower.c ft_isalpha.c ft_isalnum.c ft_ispr
 	ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_itoa.c ft_substr.c ft_strjoin.c \
 	ft_strtrim.c ft_split.c ft_strmapi.c ft_striteri.c ft_printf.c pf_putchar.c \
 	pf_putstr.c pf_putptr.c pf_putnbr.c pf_put_uint.c pf_puthexadec.c pf_strlen.c \
-	pf_numlen.c
+	pf_numlen.c get_next_line.c get_next_line_utils.c
 
 OBJS =	$(SRCS:.c=.o)
 
