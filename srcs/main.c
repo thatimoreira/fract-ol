@@ -15,22 +15,24 @@
 int main(int argc, char **argv)
 {
     size_t  i;
+    int     user_option;
 
     // ./fractol 1   => mandelbrot
     // ./fractol 2 <real> <i>   => julia
     i = 0;
-    if (argc < 2 || (argv[1] == "1\0" && argc > 2) // Mandelbrot with parameters
-            || (argv[1] == "2\0") && argc < 4// Julia with less params then needed
-            || (argv[1] != "1\0" || argv[2] != "2\0"))
+    user_option = ft_atoi(argv[1]);
+    if (argc < 2 || (user_option == 1 && argc > 2) // Mandelbrot with parameters
+            || (user_option == 2 && argc < 4)// Julia with less params then needed
+            || (user_option != 1 || user_option != 2))
     {
         // displays a list of available parameters and exits properly.
         ft_putstr_fd(ERROR_MSG, STDERR_FILENO);
         exit(EXIT_FAILURE);
     }
-    else if (argv[1] == "1\0")
-        render_mandelbrot(ft_atoi(argv[1]));
+    else if (user_option == "1\0")
+        render_mandelbrot(ft_atoi(user_option));
     else //Julia choosed
-        render_julia(ft_atoi(argv[1]), n1, n2); // complex numbers
+        render_julia(ft_atoi(user_option), n1, n2); // complex numbers
 
     // display_image(); -> displays the rendered img
 
