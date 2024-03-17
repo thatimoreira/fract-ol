@@ -28,13 +28,9 @@ int main(int argc, char **argv)
         exit(EXIT_FAILURE);
     }
     else if (argv[1] == "1\0")
-        render_fractal(ft_atoi(argv[1]), 720, 480); // Think more about these fixed values
+        render_mandelbrot(ft_atoi(argv[1]));
     else //Julia choosed
-        render_fractal(ft_atoi(argv[1]), n1, n2); // complex numbers
-
-
-
-    // render_fractal(fractal_name); -> renders the selected fractal
+        render_julia(ft_atoi(argv[1]), n1, n2); // complex numbers
 
     // display_image(); -> displays the rendered img
 
