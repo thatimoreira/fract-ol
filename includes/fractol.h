@@ -26,4 +26,6 @@ typedef struct s_fract // s_data
     int     endian; // used to specify how pixel data is stored or interpreted within an image (check thi case)
 }           t_fract;
 
+void    pixel_put(t_fract fract, int x, int y, int color);
+
 #endif
