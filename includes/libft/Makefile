@@ -3,7 +3,9 @@ SRCS = 	ft_isdigit.c ft_toupper.c ft_tolower.c ft_isalpha.c ft_isalnum.c ft_ispr
 	ft_strchr.c ft_strrchr.c ft_atoi.c ft_memset.c ft_bzero.c ft_memcpy.c \
 	ft_memmove.c ft_memchr.c ft_memcmp.c ft_calloc.c ft_strdup.c ft_putchar_fd.c \
 	ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_itoa.c ft_substr.c ft_strjoin.c \
-	ft_strtrim.c ft_split.c ft_strmapi.c ft_striteri.c
+	ft_strtrim.c ft_split.c ft_strmapi.c ft_striteri.c ft_printf.c pf_putchar.c \
+	pf_putstr.c pf_putptr.c pf_putnbr.c pf_put_uint.c pf_puthexadec.c pf_strlen.c \
+	pf_numlen.c get_next_line.c get_next_line_utils.c
 
 OBJS =	$(SRCS:.c=.o)
 
