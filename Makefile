@@ -17,7 +17,7 @@ MLXFLAGS = $(CFLAGS) -L$(MLX_LIB) -lmlx_Linux -L/usr/lib -I$(MLX_LIB) -lXext -lX
 LIBFT = $(LIBFT_PATH)/libft.a
 
 %.o: %.c
-	$(CC) $(CFLAGS) $(LIBFT_PATH) -I/usr/include -I mlx_linux -O3 -c $< -o $@
+	$(CC) $(CFLAGS) -I/usr/include -I mlx_linux -O3 -c $< -o $@
 
 $(NAME): $(OBJS) $(LIBFT)
 	 $(CC) $(OBJS) $(MLXFLAGS) $(LIBFT) -o $(NAME) 
