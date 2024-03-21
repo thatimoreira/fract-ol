@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minilibx-linux/mlx.h"
 #include "../includes/fractol.h"
 
 void    init_minilibx(void *mlx)
