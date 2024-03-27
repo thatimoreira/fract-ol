@@ -28,7 +28,7 @@
 # define MIN_SEED -1.5
 # define MAX_SEED 1.5
 # define MIN_ITER 1 */
-# define MAX_ITER 38
+# define MAX_ITER 74
 
 
 # define ESC  27 // Keyboard ESC
@@ -39,6 +39,25 @@
 
 # define SCROLL_UP 4 // zoom in
 # define SCROLL_DOWN 5 // zoom out
+
+// Basic Colors
+#define BLACK "#000000"
+#define RED "#FF0000"
+#define GREEN "#00FF00"
+#define YELLOW "#FFFF00"
+#define BLUE "#0000FF"
+#define WHITE "#FFFFFF"
+
+// Psychdelic Colors
+#define PSYCHEDELIC_PURPLE "#9933FF"
+#define PSYCHEDELIC_ORANGE "#FF9933"
+#define PSYCHEDELIC_PINK "#FF0099"
+#define PSYCHEDELIC_YELLOW "#FFFF33"
+#define PSYCHEDELIC_CYAN "#00FFFF"
+#define PSYCHEDELIC_GREEN "#33FF00"
+#define PSYCHEDELIC_BLUE "#0066FF"
+#define PSYCHEDELIC_RED "#FF3333"
+
 
 typedef struct	s_fract 
 {
@@ -59,22 +78,23 @@ typedef struct	s_fract
 	double	cy; // Complex y: imaginary part of the complex number
 	double	zx;
 	double	zy;
+	double	hypotenuse;
 	double	x_offset; // Offset for x direction (allows to pan or move the fractal => shifts the fractal horizontally)
 	double	y_offset; // offset for y direction (allows to pan or move the fractal => shifts the fractal vertically)
 	double	zoom; // Average of x_zoom and y_zoom (used when both zoom factors expected to be equal)
 	int		max_iter; // Maximum number of iterations (determines the level of detail and complexity in the generated fractal img)
     // CAUTION!!! => Increasing max_iter can reveal more details of the fractal but may also increase computation time
-}t_fract;
+}			t_fract;
 
 // Function prototypes
 void	put_pixel(t_fract *fract, int x, int y, int color);
-int	validate_input(int n_args, char **args);
+int		validate_input(int n_args, char **args);
 void	handle_allocation_failure(void);
 void	set_fractal_name(t_fract *fractal, char **arguments);
 void	render_mandelbrot(t_fract *fractal);
 void	render_julia(t_fract *fractal, double n1, double n2);
 void	calculate_julia(t_fract *fractal, double julia_x, double julia_y);
-int	cleanup_fractal(t_fract *fractal);
+int		cleanup_fractal(t_fract *fractal);
 void	print_menu();
 
 // Init
@@ -93,6 +113,7 @@ void	render_julia_set(t_fract *fractal);
 // Math
 double	ft_atof(const char *n);
 double	linear_interpolate(double n, double n_min, double n_max, double max);
+void	operate_complex(t_fract *fractal, double imag1, double imag2);
 
 #endif
 
