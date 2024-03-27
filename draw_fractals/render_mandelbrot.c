@@ -19,7 +19,7 @@
 // Mandelbort function => z = z² + c
 // initial z is (0, 0)
 // c is the current point
-void    calc_mandelbrot(int x, int y, t_fract *fractal)
+void    calculate_mandelbrot(int x, int y, t_fract *fractal)
 {
     double  i1;
     double  i2;
@@ -40,19 +40,16 @@ void    calc_mandelbrot(int x, int y, t_fract *fractal)
     // If the number diverges, the iteration is counted as an invalid number
     while(iters < fractal->max_iter)
     {
-        operate_complex(&fractal, i1, i2);
+        operate_complex(fractal, i1, i2);
         if ((fractal->zx * fractal->zx) + (fractal->zy * fractal->zy) > fractal->hypotenuse) // check if it's out of set
         {
             fractal->color = linear_interpolate(iters, 0x000000, 0xFFFFFF, fractal->max_iter);
-            put_pixel(&fractal->img, x, y, fractal->color);
+            put_pixel(fractal->img, x, y, fractal->color);
             return ; 
         }
         iters++;
     }
-    put_pixel(&fractal->img, x, y, PSYCHEDELIC_ORANGE);
-}
-
-
+    put_pixel(fractal, x, y, PSYCHEDELIC_ORANGE);
     /*
     fractal->x_complex = (double)x / WIDTH * (MAX_SEED - MIN_SEED) + MIN_SEED;
     fractal->y_complex = (double)y / HEIGHT * (MAX_SEED - MIN_SEED) + MIN_SEED;

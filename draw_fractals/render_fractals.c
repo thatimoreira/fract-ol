@@ -14,9 +14,6 @@
 
 // Implements functions for rendering fractals images
 
-void    handle_pixel(int x, int y, t_fract *fractal)
-{}
-
 void	render_fractals(t_fract *fractal)
 {
     int     x; // current pixel
@@ -30,23 +27,23 @@ void	render_fractals(t_fract *fractal)
         x = -1;
         while (++x < WIDTH)
         {
-            handle_pixel(x, y, fractal) ;//change this name
-        }
-        x = pixel_index % WIDTH;
-        y = pixel_index / WIDTH;
-        if (fractal->user_option == 1)
-        {
-            fractal->x = x;
-            fractal->y = y;
-            calculate_mandelbrot(fractal);
-        }/*
-        else if (fractal->user_option == 2)
-        {
-            fractal->x = x;
-            fractal->y = y;
-            calculate_julia(fractal, fractal->zx, fractal->zy);
-        }
+            if (fractal->user_option == 1)
+            {
+                fractal->x = x;
+                fractal->y = y;
+                calculate_mandelbrot(x, y, fractal);
+            }
+            /*
+            else if (fractal->user_option == 2)
+            {   
+                fractal->x = x;
+                fractal->y = y;
+                calculate_julia(fractal, fractal->zx, fractal->zy);
+            }
             */
-        pixel_index++;
+            mlx_put_image_to_window(fractal->mlx_connection, fractal->mlx_window,
+                                        fractal->ptr_img, fractal->x, fractal->y);
+        }
+       
     }
 }
