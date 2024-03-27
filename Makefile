@@ -21,7 +21,8 @@ SRCS = $(addprefix $(SRC_DIR), $(SRC))
 DRAW_SRCS = $(addprefix $(DRAW_DIR), $(DRAW_SRC))
 UTILS_SRCS = $(addprefix $(UTILS_DIR), $(UTILS_SRC))
 OBJS =	$(patsubst $(SRC_DIR)%.c,$(OBJ_DIR)%.o,$(SRCS)) \
-		$(patsubst $(DRAW_DIR)%.c,$(OBJ_DIR)%.o,$(DRAW_SRCS))
+		$(patsubst $(DRAW_DIR)%.c,$(OBJ_DIR)%.o,$(DRAW_SRCS)) \
+		$(patsubst $(UTILS_DIR)%.c,$(OBJ_DIR)%.o,$(UTILS_SRCS))
 
 all:	$(NAME) #$(MLX) $(LIBFT)
 
@@ -59,4 +60,3 @@ fclean:	clean
 re:	fclean all
 
 .PHONY: all clean fclean re
-
