@@ -15,7 +15,7 @@ OBJ_DIR = objs/
 
 SRC = 	main.c fractol_init.c 
 DRAW_SRC = render_fractals.c render_mandelbrot.c #render_julia.c
-UTILS_SRC = math_utils.c printmsg_utils.c render_utils.c
+UTILS_SRC = math_utils1.c math_utils2.c printmsg_utils.c render_utils.c
 
 SRCS = $(addprefix $(SRC_DIR), $(SRC))
 DRAW_SRCS = $(addprefix $(DRAW_DIR), $(DRAW_SRC))
