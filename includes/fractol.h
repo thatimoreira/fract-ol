@@ -21,8 +21,8 @@
 # define INVALID_USAGE "\nToo much or missing parameter(s)!\n"
 # define INVALID_FRACTAL "Invalid fractal set!"
 
-# define WIDTH 720
-# define HEIGHT 720
+# define WIDTH 770
+# define HEIGHT 770
 
 /*
 # define MIN_SEED -1.5
@@ -92,7 +92,7 @@ void	render_julia_set(t_fract *fractal);
 
 // Math
 double	ft_atof(const char *n);
-double	linear_interpolate(double n, double n_min, double n_max);
+double	linear_interpolate(double n, double n_min, double n_max, double max);
 
 #endif
 
