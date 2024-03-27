@@ -12,6 +12,13 @@
 
 #include "../includes/fractol.h"
 
+void	print_menu()
+{
+	ft_printf("Choose a fractal type accordingly to it's number:\n");
+	ft_printf("1) Mandelbrot\n2) Julia\n");
+	ft_printf("\nExecution patterns: \n\t./fractol 1 or \n\t./fractol 2 <x value> <y value>\n\n");
+}
+
 void	handle_allocation_failure(void)
 {
 	ft_putstr_fd("Memory allocation failed!\n", 1);
