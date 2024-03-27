@@ -16,30 +16,41 @@
 // the color attribute based on whether the pixel is inside or outside the Mandelbrot set
 // real (x) coordinate: range [-2, 0.5]
 // imaginary (y) coordinate: range [-1, 1]
-void    calculate_mandelbrot(t_fract *fractal)
+// Mandelbort function => z = z² + c
+// initial z is (0, 0)
+// c is the current point
+void    calc_mandelbrot(int x, int y, t_fract *fractal)
 {
-    double  temp_zx;
+    double  i1;
+    double  i2;
     int     iters; //  count num of iterations
 
-    temp_zx = 0.0;
-    iters = 0;
+   
+    // 1st iteration
     fractal->zx = 0.0;
     fractal->zy = 0.0;
-    // x and y coordinates are transformed to the range [-2, 2] in the x and y directions
-    // by subtracting the width or height divided by 2, and then dividing by the width or
-    // height divided by 4.
-    fractal->cx = (fractal->x - WIDTH / 2.0) / (WIDTH / 4.0);
-    fractal->cy = (fractal->y - HEIGHT / 2.0) / (HEIGHT / 4.0);
-    while (iters < fractal->max_iter && ((fractal->zx * fractal->zx + fractal->zy * fractal->zy) <= 4))
+    iters = 0;
+    
+     // current point that has to be checked, linear interpolated to fit the mandelbrot set
+    fractal->cx = linear_interpolate(x, -2, +2, WIDTH);
+    fractal->cy = linear_interpolate(y, +2, -2, HEIGHT);
+
+    // Iterates z² + c until the numbers diverge
+    // If the numbers remain within the bound, the iteration is counted as a valid number in the set
+    // If the number diverges, the iteration is counted as an invalid number
+    while(iters < fractal->max_iter)
     {
-        temp_zx = fractal->zx * fractal->zx - fractal->zy * fractal->zy + fractal->cx;
-        fractal->zy = 2 * fractal->zx * fractal->zy + fractal->cy;
+        operate_complex(&fractal, i1, i2);
+        if ((fractal->zx * fractal->zx) + (fractal->zy * fractal->zy) > fractal->hypotenuse) // check if it's out of set
+        {
+            fractal->color = linear_interpolate(iters, 0x000000, 0xFFFFFF, fractal->max_iter);
+            put_pixel(&fractal->img, x, y, fractal->color);
+            return ; 
+        }
         iters++;
     }
-    if (iters == fractal->max_iter)
-        put_pixel(fractal, fractal->x, fractal->y, 0x000000); // Sets color to black for pixel inside Mandelbrot set
-    else
-        put_pixel(fractal, fractal->x, fractal->y, fractal->color * iters);
+    put_pixel(&fractal->img, x, y, PSYCHEDELIC_ORANGE);
+}
 
 
     /*
