@@ -65,3 +65,14 @@ double	ft_atof(const char *nptr)
 	decimal_part = calculate_decimal_part(n_str, decimal_part);
 	return ((integer_part + decimal_part) * sign);
 }
+
+// Calculate the scaled value using linear interpolation: from [0 - 1000]scale to [-2 - +2]scale
+double  linear_interpolate(double n, double n_min, double n_max, double max) // linear interpolation
+{
+    // old_min = 0
+    // old_max = WIDTH/HEIGHT (because in this project they are equal - working with squares)
+    double  interpolated_n;
+
+    interpolated_n = (n_max - n_min) * n / WIDTH + n_min;
+    return (interpolated_n);
+}
