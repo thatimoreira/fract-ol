@@ -87,11 +87,9 @@ typedef struct	s_fract
 }			t_fract;
 
 // Function prototypes
-void	put_pixel(t_fract *fract, int x, int y, int color);
 int		validate_input(int n_args, char **args);
 void	handle_allocation_failure(void);
 void	set_fractal_name(t_fract *fractal, char **arguments);
-void	render_mandelbrot(t_fract *fractal);
 void	render_julia(t_fract *fractal, double n1, double n2);
 void	calculate_julia(t_fract *fractal, double julia_x, double julia_y);
 int		cleanup_fractal(t_fract *fractal);
@@ -102,13 +100,12 @@ void	fractol_init(t_fract *fractal);
 void	init_fractal(t_fract *fractal);
 void	init_minilibx(t_fract *fractal);
 
-//Function prototypes for drawing fractals images
-void	render_fractals(t_fract *fractal);
-
 //Function prototypes for rendering fractals images
-void	calculate_mandelbrot(t_fract *fractal);
+void	calculate_mandelbrot(int x, int y, t_fract *fractal);
 void	render_mandelbrot_set(t_fract *fractal);
+void	render_fractals(t_fract *fractal);
 void	render_julia_set(t_fract *fractal);
+void	put_pixel(t_fract *fractal, int x, int y, int color);
 
 // Math
 double	ft_atof(const char *n);
@@ -116,5 +113,3 @@ double	linear_interpolate(double n, double n_min, double n_max, double max);
 void	operate_complex(t_fract *fractal, double imag1, double imag2);
 
 #endif
-
-
