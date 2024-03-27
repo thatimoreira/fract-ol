@@ -14,10 +14,11 @@
 
 // Implements auxiliary function for rendering fractal images
 
-void    put_pixel(t_fract *fract, int x, int y, int color)
+// Put pixel in image buffer
+void    put_pixel(t_fract *fractal, int x, int y, int color)
 {
-    char    *buffer;
+    int offset;
 
-    buffer = fract->addr + (y * fract->line_len + x * (fract->bpp / 8));
-    *(unsigned int *)buffer = color;
+    offset = (y * fractal->line_len) + (x * (fractal->bpp / 8));
+    *(unsigned int *)(fractal->ptr_img + offset) = color;
 }
